@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Deposit
+{% endblock %}
+
+{% block main %}
+    <form action="/deposit" method="post">
+        <div class="mb-3"> <!-- In Bootstrap, mb-3 stands for "margin-bottom: 3 units". -->
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="deposit" placeholder="Deposit amount" type="number" min="0">
+        </div>
+        <button class="btn btn-primary" type="submit">Deposit</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <form action="/" method="post"> <!--You could also just omit the `action="/"` since the form will assume that you want to submit it to the very same route from which you came from-->
+        <input autocomplete="off" autofocus name="name" placeholder="Name" type="text"> <!--By default `type` would be set to text anyway-->
+        <button type="submit">Greet</button>
+
+{% endblock %}
