@@ -1,0 +1,60 @@
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+sort1 uses: BUBBLE
+
+How do you know?:
+5,516s for random50000
+0,193s for random10000
+0,065s for random5000
+
+5,268s for reversed50000
+0,236s for reversed10000
+0,075s for reversed5000
+
+0,594s for sorted50000
+0,032s for sorted5000
+
+It is the slowest for `random50000.txt`/`reversed50000.txt` and it takes almost the same running
+time for the both, thus not giving us any hint on whether it is BUBBLE or SELECTION sorting.
+Its running time for `sorted50000.txt` is much faster that the other `.txt` files with the same
+number of elements, and this behavior is matching to the BUBBLE sorting running time property
+which are: Ω(n^2) in the worst case-scenario and Ω(n) in the best-case scenario.
+
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+sort2 uses: MERGE
+
+How do you know?:
+0,535s for random50000
+0,054s for random10000
+0,027s for random5000
+
+0,549s for reversed50000
+0,070s for reversed10000
+0,053s for reversed5000
+
+0,571s for sorted50000
+0,035s for sorted5000
+
+It is the quickest for `random50000.txt`/`reversed50000.txt` and it takes the same running time for
+the both, matching to its θ(n log n) running time property. Confirming the thesis `sorted50000.txt`
+runs in the same time as the non-sorted `.txt` files.
+
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+sort3 uses: SELECTION
+
+How do you know?:
+2,262s for random50000
+0,131s for random10000
+0,042s for random5000
+
+2,483s for reversed50000
+0,167s for reversed10000
+0,044s for reversed5000
+
+2,323s for sorted50000
+0,052s for sorted10000
+
+It is the second quickest for `random50000.txt`/`reversed50000.txt` and it takes the same running time
+for the both. Also, it has the same running time with `sorted50000.txt` matching to its θ(n^2) running
+time property.
