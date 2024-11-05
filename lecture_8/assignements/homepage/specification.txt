@@ -1,0 +1,53 @@
+These are all the HTML tags I used in my website:
+- html
+- head
+- meta
+- script
+- link
+- title
+- body
+- nav
+- div
+- span
+- button
+- ul
+- li
+- a
+- form
+- main
+- header
+- br
+- figure
+- img
+- figcaption
+- strong
+- i
+- footer
+- iframe
+- p
+
+These are the CSS properties I used in my website:
+- height
+- background-color
+- display
+- flex-direction
+- justify-content
+- font-size
+- color
+- padding
+- flex-grow
+- margin
+- text-align
+- margin-bottom
+- text-decoration
+- border
+- border-radius
+- transition
+- max-width
+
+I started looking into Bootstrap for a clean navbar design (https://getbootstrap.com/docs/5.2/components/navbar/)
+and I chose it since it seemed cool and clear. From Bootstrap, then, I also chose the footer design I liked the most.
+
+Concerning JavaScript, I wanted the user to be able to click on one of those buttons that allows them to directly
+open an email destined to me and I looked how to build one on Google using JavaScript.
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+
+            // Run script once DOM (all the content of the page) is loaded
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // When the correct answer is clicked, change color to green
+                let correct = document.querySelector('.correct');
+                correct.addEventListener('click', function() {
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#feedback1').innerHTML = 'Correct!';
+                })
+
+                // When any incorrect answer is clicked, change color to green
+                let incorrects = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < incorrects.length; i++) {
+                    incorrects[i].addEventListener('click', function() {
+                        incorrects[i].style.backgroundColor = 'red';
+                        document.querySelector('#feedback1').innerHTML = 'Incorrect.';
+                    })
+                }
+
+                // Check free response submission
+                document.querySelector('#check').addEventListener('click', function() {
+                    let input = document.querySelector('input');
+                    if (input.value === 'Brown, Irving, Tatum') {
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#feedback2').innerHTML = 'Correct!';
+                    } else {
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#feedback2').innerHTML = 'Incorrect.';
+                    }
+                })
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="question">
+
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>How many players in NBA history averaged 20 or more points in the NBA Finals over 10+ game played?</h3>
+                <button class="incorrect">15</button>
+                <button class="incorrect">21</button>
+                <button class="incorrect">24</button>
+                <button class="incorrect">29</button>
+                <button class="incorrect">34</button>
+                <button class="correct">37</button>
+
+                <p id="feedback1"></p>
+
+            </div>
+
+            <div class="question">
+
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>In alphabetical order, write the last name of all the 2024 NBA Finals players that you think are in this list.</h3>
+                <input type="text" placeholder="E.g.: Abdul-Jabbar, Bird, Johnson">
+                <button id="check">Check answer</button>
+
+                <p id="feedback2"></p>
+
+            </div>
+        </div>
+    </body>
+
+</html>

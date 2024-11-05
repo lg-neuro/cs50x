@@ -1,0 +1,52 @@
+<!-- With a lot of help by Claude, I built this page. -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>NBA Trivia!</title>
+        <script src="trivia.js"></script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Test your basketball knowledge!</h1>
+        </div>
+
+        <div class="container">
+            <div id="question1" class="question">
+
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>How many players in NBA history averaged 20 or more points in the NBA Finals over 10+ game played?</h3>
+                <button class="incorrect">15</button>
+                <button class="incorrect">21</button>
+                <button class="incorrect">24</button>
+                <button class="incorrect">29</button>
+                <button class="incorrect">34</button>
+                <button class="correct">37</button>
+
+                <p class="feedback"></p>
+
+            </div>
+
+            <div id="question-free1" class="question">
+
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>Write the last name of all the 2024 NBA Finals players that you think are found in this list.</h3>
+                <input type="text" placeholder="E.g.: Abdul-Jabbar, Bird, Johnson" style="width: 300px;">
+                <button id="check">Check answer</button>
+
+                <p class="feedback"></p>
+
+            </div>
+        </div>
+    </body>
+
+</html>

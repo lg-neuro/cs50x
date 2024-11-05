@@ -1,0 +1,17 @@
+1.
+I would calculate the average energy, valence, and danceability, of the top 100 listened to songs (as written in the text) and
+set three a priori tables containing adjectives for each combination of two of the three values. Of course, since a table containing
+100 x 100 adjectives (considering to approximate the averages to two decimals) would be unnecessarily too specific, I would set
+some boundaries, maybe in the order of .2 (therefore five values for each average), and propose three 5 x 5 tables with 75 adjectives
+representative of "moods": I would treat these three tables as a graph (e.g., on x energy and y valence) and select the mood at
+the intersection of the two values. Then, out of the three outputs, I would consider the proximity to the boundaries of their
+"mood" value to choose the most representative ones (the closer to the boundaries is discarded).
+
+2.
+To start, I want to say that it is almost impossible to calculate an absolute audio aura for the majority of people since their
+mood (and consequently what they listen to) largely depends on very variable things like the hour of the day, the part of the year,
+and, most importantly, what is going on in their life. That said, sticking with the algorithm on the first answer, I think a more
+accurate way to calculate a person's audio aura would be to, first, give all the three calculated mood adjectives, second, consider
+dividing what's listened in the morning, in the afternoon, and in the evening, providing three "sub-audio auras" and only if some
+pattern is found to give a general one, third, take into account more songs, e.g., the top 500 listened to songs, and, fourth,
+compute a weighted average to provide more importance to the values of the most listened-to songs.
