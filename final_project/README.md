@@ -1,0 +1,39 @@
+# COUNTER
+#### Video Demo:  <[Counter on YouTube](https://www.youtube.com/watch?v=ThWo0Zzae0Y)>
+### Description:
+My CS50x final project is an iOS application that I built using Swift. This class was my first experience in Computer Science, and I had no prior programming experience whatsoever. Indeed, I was using Swift for the first time in my life when I started this project, and I got a little help from ChatGPT to manage a tricky part of the project: memory management. The application is simple, yet it solves a real-world problem that I encountered in the past while working in a biological lab during my Master's internship.
+
+When keeping track of tubes or plates during parallel experiments, it's easy to lose count. I solved this problem with **Counter**, an iOS app that makes counting easy. It can be useful in various situations, not just the one I described, and it aims to replace mechanical tally counters.
+
+**Counters** gives you the possibility to create as many counters as you need. By tapping on the nice "+" button found on the top right of the screen, a new view pops up and allows the user to select a name, a starting number, and a step size (how long will the jump be each time the user triggers the count) for the new counter. When the user taps on "Create Counter", underneath the hood, the app will automatically generate a UUID and set the creation date. If the user creates a new counter leaves any fields empty, the app will set the starting number to 0, the step size to (+)1, and the name to "New Counter #N", with N being the smallest available number, by default. Let me brake this process down: if the new counter is the first un-named created counter, it will be named "New Counter 1", while if, e.g. "New Counter 1" already exists, the next counter will be "New Counter 2." If "New Counter 1" is deleted, the next created counter will again be named "New Counter 1," ensuring a continuous sequence and no equal names.
+
+All the created counters will be displayed on the main page of the app, with the lastest ones on top. Users can choose to pin one or more counters, by swiping from left-to-right on the counter's navigation link, causing it to remain at the top of the list: of course, the user can also un-pin the counter which will return to its spot in the list. The pinned counter will display a yellow pin on the far right. By swiping right-to-left, the user can also delete a counter permanently.
+
+Tapping on a counter navigation link, opens the counter's view. In this view, the name of the counter is displayed on the top while the center of the screen is occupied by a big-sized number in Menlo font (a monospaced font that prevents micromovements of different width characters). The displayed number will be the starting number, for a new counter, or the last number stored by the counter in its last use, since every counter will memorize its progress. On the bottom of the screen, the creation date is displayed in light gray characters. By tapping on the screen, in the area stretching from underneath the title to the bottom of the screen, the user will be able to increase the by one step the counter, and, by dragging their finger from right-to-left (in the same area), the user will be able to decrease the count by one step. The user can set as step size a negative number too, in this case, the number on the counter will answer diminishing to the taps and growing to the drags.
+
+From the counter view, the user can return to the main view by tapping on the top left corner "back" button. The user can also access settings for the counter by tapping on the gear-shaped icon in the top right corner. This button will open a setting view where it is possible to rename the counter, change the step size, add a specific amount to the counter, or set the counter to a specific number. After clicking the "Save" button all these changes will be applied and memorized by the counter and the view will get back to the counter. The user can also click on "Close" which will close the setting view and redirect to the counter view without applying any change.
+
+All the data will be memorized on the device even if the user force closes the app, thus allowing access to a new app without the need for an internet connection.
+
+### Code Description:
+
+I have divided my app into several files that I will describe one by one.
+
+##### `CounterStruct.swift`
+This is the entry point for my app. It contains the `@main` struct, which defines the app's structure and lifecycle. This file is responsible for launching the app and setting up the UI `WindowGroup` inside the `Scene`, represented by the root view of the app `ContentView`. `SwiftUI` is the framework managing the UI, while `Foundation` is the framework storing data in `UserDefaults` and managing universal unique identifiers (UUIDs) and dates.
+
+##### `CounterStruct.swift`
+This file declares the `Counter` struct. It conforms to the `Identifiable` protocol, to provide each counter a unique ID, thus being efficiently managed, and to the `Codable` protocol, to allow storing and retrieving data from UserDefaults (allows the struct to be convertible to and from JSON format). `Counter` struct has several variables: unique `id`, `name`, `count`, `stepSize`, `creationDate`, and `pinned` a boolean flag to remember if the counter is pinned or not. Every variable is initialized and, since I had problems keeping track of the counter's `count` progress, with `loadCount` any existing `count`s are tracked.
+
+##### `ContentView.swift`
+This is the main page and root of my app, represented by the struct `ContentView`, which conforms to the `View` protocol. It contains `@State` variables which dictate what is going to appear on the screen while they update. In `NavigationView`, all the sorted counters are displayed and are passed through `NavigationLink` to the `CounterView` (and they will answer to `swipeActions`s), but only if the `counters` array is populated, otherwise guidelines are shown to the user. Several functions help the app to work properly, like `binding` which links directly the view and the counter's data, without the need to manually synchronize the changes. Through the `Button` at right in the toolbar the user opens `NewCounterView`.
+
+##### `NewCounterView.swift`
+This view allows the user to create a new counter. It displays the `NewCounterView` view with a `Form`, a group of input fields, to set the name, starting number, and step size (the latter two accept only numeric input). The `createCounter` button then triggers all the helper functions adding values where they are not inserted by the user, saving the newly created counter, and going back to the main root view. To give un-named counters a default name the `getDefaultCounterName` function first checks which names (actually which #N) are already used and then gives the smallest "available" one ("New counter #N").
+
+##### `CounterView.swift`
+This is the view in which the user actually counts. It displays the `CounterView` view with the name, the current count, and the creation date. Their disposition is optimized to work on any iOS device screen. Taps on the screen are associated with the sum of the "step size" to the current count (positive or negative values) and to haptic feedback; instead, drags wider than 30 points trigger the subtraction of the "step size" to the current count accompanied, as well, by haptic feedback. Every step is saved on the device. On the top left corner, a gear-shaped icon brings the user to the `CounterSettingsView`.
+
+##### `CounterSettingsView.swift`
+Similarly structured to `NewCounterView`, this view allows the user to change the counter's name and step size. It also gives the user the possibility to add a certain quantity to the current count or to set the current count to a specific number. By saving the modification, these will affect the counter instantaneously.
+
